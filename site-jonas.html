@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonas | Commissions Abertas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --azul-escuro: #0a1628;
+            --azul-medio: #1e3a5f;
+            --azul-claro: #2563eb;
+            --azul-cyan: #06b6d4;
+            --azul-suave: #3b82f6;
+            --branco: #ffffff;
+            --cinza: #94a3b8;
+            --dourado: #fbbf24;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(180deg, var(--azul-escuro) 0%, var(--azul-medio) 100%);
+            color: var(--branco);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header / Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.2) 0%, transparent 50%);
+            animation: float 15s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, var(--azul-claro), var(--azul-cyan));
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--branco) 0%, var(--azul-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--cinza);
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--azul-claro), var(--azul-cyan));
+            color: var(--branco);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--branco);
+            border: 2px solid var(--azul-suave);
+        }
+
+        .btn-secondary:hover {
+            background: var(--azul-suave);
+            transform: translateY(-3px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--azul-cyan);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--azul-cyan);
+            border-radius: 50%;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        @keyframes scroll {
+            0% { opacity: 1; top: 8px; }
+            100% { opacity: 0; top: 30px; }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--cinza);
+        }
+
+        .section-title .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Sobre */
+        .sobre-text {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .sobre-text .intro {
+            font-size: 1.3rem;
+            color: var(--azul-cyan);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .sobre-text p {
+            color: var(--cinza);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .skills-section {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.4), rgba(37, 99, 235, 0.2));
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .skills-section h3 {
+            color: var(--azul-cyan);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(37, 99, 235, 0.2));
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            color: var(--branco);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.4), rgba(37, 99, 235, 0.4));
+            transform: translateY(-2px);
+        }
+
+        .cta-text {
+            font-size: 1.15rem !important;
+            color: var(--branco) !important;
+            margin-top: 2rem;
+        }
+
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .sobre-card {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(37, 99, 235, 0.2));
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .sobre-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .sobre-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .sobre-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--azul-cyan);
+        }
+
+        .sobre-card p {
+            color: var(--cinza);
+            font-size: 0.95rem;
+        }
+
+        /* Preços */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .price-card {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.6), rgba(37, 99, 235, 0.3));
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .price-card:hover {
+            transform: scale(1.05);
+            border-color: var(--azul-cyan);
+        }
+
+        .price-card.featured {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(37, 99, 235, 0.3));
+            border-color: var(--azul-cyan);
+        }
+
+        .price-card.featured::before {
+            content: '⭐ Popular';
+            position: absolute;
+            top: 1rem;
+            right: -2rem;
+            background: var(--dourado);
+            color: var(--azul-escuro);
+            padding: 0.3rem 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+
+        .price-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--azul-cyan);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--branco), var(--azul-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price-note {
+            font-size: 0.85rem;
+            color: var(--cinza);
+            margin-top: 0.5rem;
+        }
+
+        /* Adicionais */
+        .adicional-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .adicional-card {
+            background: rgba(30, 58, 95, 0.4);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--azul-cyan);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .adicional-card span {
+            color: var(--cinza);
+        }
+
+        .adicional-card strong {
+            color: var(--azul-cyan);
+            font-size: 1.2rem;
+        }
+
+        /* Pagamento */
+        .pagamento-section {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(37, 99, 235, 0.2));
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .pagamento-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .pagamento-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pagamento-item h3 {
+            margin-bottom: 0.5rem;
+            color: var(--azul-cyan);
+        }
+
+        .pagamento-item p {
+            color: var(--cinza);
+            font-size: 0.95rem;
+        }
+
+        /* Portfólio */
+        .portfolio-section {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(37, 99, 235, 0.2));
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            text-align: center;
+        }
+
+        .portfolio-section h3 {
+            color: var(--azul-cyan);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .portfolio-section p {
+            color: var(--cinza);
+            margin-bottom: 2rem;
+        }
+
+        .portfolio-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #FF6B6B, #FF4757);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        .portfolio-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Formulário */
+        .form-section {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.5), rgba(37, 99, 235, 0.2));
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .form-info {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-info h3 {
+            color: var(--azul-cyan);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .form-info p {
+            color: var(--cinza);
+        }
+
+        .form-card {
+            background: rgba(10, 22, 40, 0.5);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--azul-cyan);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            background: rgba(30, 58, 95, 0.5);
+            color: var(--branco);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--azul-cyan);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group select option {
+            background: var(--azul-escuro);
+            color: var(--branco);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, var(--azul-claro), var(--azul-cyan));
+            color: var(--branco);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Contato */
+        .contato-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .contato-card {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.6), rgba(37, 99, 235, 0.3));
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--branco);
+        }
+
+        .contato-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--azul-cyan);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
+        }
+
+        .contato-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contato-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contato-card p {
+            color: var(--azul-cyan);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--cinza);
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            margin-top: 3rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Divisor */
+        .divider {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--azul-claro), var(--azul-cyan));
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* English Section */
+        .english-section {
+            background: rgba(10, 22, 40, 0.5);
+            margin-top: 3rem;
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">✨ Commissions Abertas</span>
+            <h1>JONAS</h1>
+            <p>Ilustrador e artista digital. Transformo ideias em arte! 💙</p>
+            <div class="hero-buttons">
+                <a href="#precos" class="btn btn-primary">Ver Preços</a>
+                <a href="#formulario" class="btn btn-primary">Fazer Pedido</a>
+                <a href="https://jonasjoabe.artstation.com/" class="btn btn-secondary" target="_blank">Ver Portfólio</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre">
+        <div class="section-title">
+            <div class="icon">👋</div>
+            <h2>Sobre Mim</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="sobre-text">
+            <p class="intro">Oi! Eu sou o Jonas 👋</p>
+            <p>Sou ilustrador e artista digital apaixonado por personagens, design e histórias. Gosto de transformar ideias em desenhos e, principalmente, dar personalidade para cada personagem que crio.</p>
+            <p>Trabalho principalmente com ilustrações de personagens e commissions, então você pode me mandar sua ideia, OC, personagem favorito ou até mesmo uma descrição meio caótica e a gente transforma isso em arte juntos. :D</p>
+            <p>Meu objetivo é que cada commission tenha a minha identidade artística, mas que também tenha a cara de quem pediu. Por isso, adoro receber referências, detalhes sobre o personagem e pequenas coisas da lore que possam deixar o desenho ainda mais especial.</p>
+            
+            <div class="skills-section">
+                <h3>✦ O que eu faço</h3>
+                <div class="skills-grid">
+                    <div class="skill-tag">Character Art</div>
+                    <div class="skill-tag">Fanart</div>
+                    <div class="skill-tag">OCs</div>
+                    <div class="skill-tag">Ilustrações de Corpo Inteiro</div>
+                    <div class="skill-tag">Ref Sheets</div>
+                    <div class="skill-tag">Designs Personalizados</div>
+                </div>
+            </div>
+            
+            <p class="cta-text">Se você tem uma ideia que gostaria de ver desenhada, manda pra mim! 💙</p>
+        </div>
+    </section>
+
+    <!-- Preços -->
+    <section id="precos">
+        <div class="section-title">
+            <div class="icon">💰</div>
+            <h2>Tabela de Comissões</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Retrato</h3>
+                <p style="color: var(--cinza); font-size: 0.9rem;">Rosto</p>
+                <div class="price">R$ 25</div>
+            </div>
+            <div class="price-card featured">
+                <h3>Meio-Busto</h3>
+                <p style="color: var(--cinza); font-size: 0.9rem;">Cabeça + Ombros</p>
+                <div class="price">R$ 35</div>
+            </div>
+            <div class="price-card">
+                <h3>Meio-Corpo</h3>
+                <p style="color: var(--cinza); font-size: 0.9rem;">Até a cintura</p>
+                <div class="price">R$ 40</div>
+            </div>
+            <div class="price-card">
+                <h3>Corpo Inteiro</h3>
+                <p style="color: var(--cinza); font-size: 0.9rem;">Figura completa</p>
+                <div class="price">R$ 55</div>
+            </div>
+            <div class="price-card">
+                <h3>Ficha</h3>
+                <p style="color: var(--cinza); font-size: 0.9rem;">Character Sheet</p>
+                <div class="price">R$ 120</div>
+            </div>
+            <div class="price-card">
+                <h3>Fundo</h3>
+                <p style="color: var(--cinza); font-size: 0.9rem;">Adicional</p>
+                <div class="price">+ R$ 20</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adicionais -->
+    <section id="adicionais">
+        <div class="section-title">
+            <div class="icon">✨</div>
+            <h2>Adicionais</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="adicional-grid">
+            <div class="adicional-card">
+                <div>
+                    <h3>Personagem Extra</h3>
+                    <span>Adicione mais um personagem na arte</span>
+                </div>
+                <strong>+50%</strong>
+            </div>
+            <div class="adicional-card">
+                <div>
+                    <h3>Design Detalhado</h3>
+                    <span>Personagens muito elaborados</span>
+                </div>
+                <strong>+R$ 15</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pagamento -->
+    <section id="pagamento">
+        <div class="section-title">
+            <div class="icon">💳</div>
+            <h2>Pagamento</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="pagamento-section">
+            <div class="pagamento-content">
+                <div class="pagamento-item">
+                    <div class="icon">💵</div>
+                    <h3>50% no Início</h3>
+                    <p>Para começar a trabalhar no seu projeto</p>
+                </div>
+                <div class="pagamento-item">
+                    <div class="icon">🎨</div>
+                    <h3>Rascunho</h3>
+                    <p>Enviado para sua aprovação antes da finalização</p>
+                </div>
+                <div class="pagamento-item">
+                    <div class="icon">✨</div>
+                    <h3>50% na Entrega</h3>
+                    <p>Após a finalização e aprovação do rascunho</p>
+                </div>
+                <div class="pagamento-item">
+                    <div class="icon">🔄</div>
+                    <h3>Alterações</h3>
+                    <p>Pequenas alterações no rascunho incluídas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfólio -->
+    <section id="portfolio">
+        <div class="section-title">
+            <div class="icon">🖼️</div>
+            <h2>Meu Portfólio</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="portfolio-section">
+            <h3>Veja meus trabalhos anteriores</h3>
+            <p>Conheça meu estilo e inspire-se para sua próxima commission!</p>
+            <a href="https://jonasjoabe.artstation.com/" class="portfolio-btn" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.333h13.457l-2.792-4.838H0zm24 .025c0-.484-.143-.935-.388-1.314L15.728 2.728a2.424 2.424 0 0 0-2.164-1.333H9.419L21.598 22.54l1.92-3.325c.378-.637.482-.919.482-1.467zm-11.129-3.462L7.428 4.858l-5.444 9.428h10.887z"/>
+                </svg>
+                Ver no ArtStation
+            </a>
+        </div>
+    </section>
+
+    <!-- Formulário -->
+    <section id="formulario">
+        <div class="section-title">
+            <div class="icon">📝</div>
+            <h2>Solicitar Commission</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="form-section">
+            <div class="form-info">
+                <h3>Faça seu pedido!</h3>
+                <p>Preencha o formulário abaixo e entrarei em contato pelo e-mail</p>
+            </div>
+            <div class="form-card">
+                <form id="commissionForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo">Tipo de Commission</label>
+                        <select id="tipo" name="tipo" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="retrato">Retrato (Rosto) - R$ 25</option>
+                            <option value="meio-busto">Meio-Busto - R$ 35</option>
+                            <option value="meio-corpo">Meio-Corpo - R$ 40</option>
+                            <option value="corpo-inteiro">Corpo Inteiro - R$ 55</option>
+                            <option value="ficha">Ficha de Personagem - R$ 120</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="personagens">Quantidade de Personagens</label>
+                        <select id="personagens" name="personagens">
+                            <option value="1">1 personagem</option>
+                            <option value="2">2 personagens (+50%)</option>
+                            <option value="3">3 personagens (+100%)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fundo">Fundo</label>
+                        <select id="fundo" name="fundo">
+                            <option value="nao">Sem fundo</option>
+                            <option value="sim">Com fundo (+R$ 20)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="idioma">Idioma</label>
+                        <select id="idioma" name="idioma">
+                            <option value="pt">Português</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao">Descrição do Personagem / Reference</label>
+                        <textarea id="descricao" name="descricao" placeholder="Descreva seu personagem, coloque referências, links de imagens..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="observacoes">Observações adicionais</label>
+                        <textarea id="observacoes" name="observacoes" placeholder="Alguma observação especial? deadline, estilo específico, etc."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Enviar Pedido ✨</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- English Version -->
+    <section id="english">
+        <div class="english-section">
+            <div class="section-title">
+                <div class="icon">🇬🇧</div>
+                <h2>Commission List (English)</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Portrait</h3>
+                    <p style="color: var(--cinza); font-size: 0.9rem;">Face only</p>
+                    <div class="price">R$ 25</div>
+                </div>
+                <div class="price-card featured">
+                    <h3>Bust</h3>
+                    <p style="color: var(--cinza); font-size: 0.9rem;">Head + Shoulders</p>
+                    <div class="price">R$ 35</div>
+                </div>
+                <div class="price-card">
+                    <h3>Half Body</h3>
+                    <p style="color: var(--cinza); font-size: 0.9rem;">Up to waist</p>
+                    <div class="price">R$ 40</div>
+                </div>
+                <div class="price-card">
+                    <h3>Full Body</h3>
+                    <p style="color: var(--cinza); font-size: 0.9rem;">Complete figure</p>
+                    <div class="price">R$ 55</div>
+                </div>
+                <div class="price-card">
+                    <h3>Character Sheet</h3>
+                    <p style="color: var(--cinza); font-size: 0.9rem;">Full reference sheet</p>
+                    <div class="price">R$ 120</div>
+                </div>
+                <div class="price-card">
+                    <h3>Background</h3>
+                    <p style="color: var(--cinza); font-size: 0.9rem;">Additional</p>
+                    <div class="price">+ R$ 20</div>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center; color: var(--cinza);">
+                <p><strong style="color: var(--azul-cyan);">Payment:</strong> 50% upfront + 50% on delivery</p>
+                <p><strong style="color: var(--azul-cyan);">Process:</strong> Sketch sent for approval before finalization</p>
+                <p><strong style="color: var(--azul-cyan);">Revisions:</strong> Small changes to the sketch are included</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato">
+        <div class="section-title">
+            <div class="icon">📬</div>
+            <h2>Entre em Contato</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="contato-grid">
+            <a href="https://instagram.com/jonasdo_art" class="contato-card" target="_blank">
+                <div class="icon">📸</div>
+                <h3>Instagram</h3>
+                <p>@jonasdo_art</p>
+            </a>
+            <a href="/cdn-cgi/l/email-protection#8de7e2e3ecfee9f8ecfff9e8bcb8bccdeae0ece4e1a3eee2e0" class="contato-card">
+                <div class="icon">✉️</div>
+                <h3>E-mail</h3>
+                <p><span class="__cf_email__" data-cfemail="72181d1c130116071300061743474332151f131b1e5c111d1f">[email&#160;protected]</span></p>
+            </a>
+            <a href="https://jonasjoabe.artstation.com/" class="contato-card" target="_blank">
+                <div class="icon">🎨</div>
+                <h3>ArtStation</h3>
+                <p>Portfólio</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Jonas | Commissions Abertas ✨</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">Feito com 💙</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Form submission - opens mail client with pre-filled data
+        document.getElementById('commissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const tipo = document.getElementById('tipo').value;
+            const personagens = document.getElementById('personagens').value;
+            const fundo = document.getElementById('fundo').value;
+            const idioma = document.getElementById('idioma').value;
+            const descricao = document.getElementById('descricao').value;
+            const observacoes = document.getElementById('observacoes').value;
+
+            const tipoLabels = {
+                'retrato': 'Retrato (Rosto)',
+                'meio-busto': 'Meio-Busto',
+                'meio-corpo': 'Meio-Corpo',
+                'corpo-inteiro': 'Corpo Inteiro',
+                'ficha': 'Ficha de Personagem'
+            };
+
+            const subject = `Commission Request - ${tipoLabels[tipo]} | ${nome}`;
+            const body = `Hello Jonas! I'd like to request a commission.
+
+📋 ORDER DETAILS:
+
+👤 Name: ${nome}
+📧 E-mail: ${email}
+🎨 Type: ${tipoLabels[tipo]}
+👥 Characters: ${personagens}
+🖼️ Background: ${fundo === 'sim' ? 'Yes (+R$20)' : 'No'}
+🌍 Language: ${idioma === 'pt' ? 'Português' : 'English'}
+
+📝 DESCRIPTION & REFERENCES:
+${descricao}
+
+${observacoes ? `📌 ADDITIONAL NOTES:\n${observacoes}` : ''}
+
+Looking forward to hearing from you! 🎨`;
+
+            window.location.href = `mailto:jonasduarte151@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+    </script>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a24b884d29e2c5ea',t:'MTc4NTY1NzQ1Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
